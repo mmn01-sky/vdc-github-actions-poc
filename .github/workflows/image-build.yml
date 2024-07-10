@@ -17,7 +17,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ${{ env.DOCKER_DEMO_PROJECT_PATH }}/.
-          tags: mmn01/vdc-demo:latest
+          tags: mmn01/vdc-demo:${{ github.run_number }}
           outputs: type=docker,dest=/tmp/vdc-demo.tar
           push: false
       
@@ -43,7 +43,7 @@ jobs:
       - name: Check Image
         run: docker images
       - name: Test Image
-        run: docker run mmn01/vdc-demo:latest
+        run: docker run mmn01/vdc-demo:${{ github.run_number }}
 
   push:
     runs-on: ubuntu-latest
@@ -59,12 +59,12 @@ jobs:
         run: |
           docker load --input /tmp/vdc-demo.tar
       
-      - name: Tag image with latest and build number
+      - name: Tag image with registry
         env:
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
-          docker tag myimage:latest sky-registry/vdc-demo:latest
-          docker tag myimage:latest sky-registry/vdc-demo:${GITHUB_RUN_NUMBER}
+          docker tag vdc-demo:${{ github.run_number }} sky-registry/vdc-demo:${{ github.run_number }}
+      #     docker tag vdc-demo:latest sky-registry/vdc-demo:${GITHUB_RUN_NUMBER}
       
       - name: Push Image to registry
         run: |
