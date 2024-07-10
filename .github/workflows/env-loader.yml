@@ -1,0 +1,24 @@
+name: CTF
+
+# build - packer validate, packer build, load vars
+# test depends on build - load vars, test inspec
+# deploy - depends on test, load vars, print vars
+
+on:
+  push:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load Env Config
+        uses: falti/dotenv-action@v1.1.3
+        with:
+          path: projects/vdc-github-actions-env/dev/all.env
+      - name: Print Env Variables
+        run: |
+          echo "Environment: $VDC_ENVIRONMENT"
+          echo "URL: $VRA_URL"
+          echo "Username: $VRA_USERNAME"
