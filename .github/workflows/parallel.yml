@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pytest-results-${{ matrix.python-version }}
-          path: $PYTHON_DEMO_PROJECT_PATH/junit/test-results-${{ matrix.python-version }}.xml
+          path: ${{ env.PYTHON_DEMO_PROJECT_PATH }}/junit/test-results-${{ matrix.python-version }}.xml
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }} # https://docs.github.com/en/actions/learn-github-actions/expressions#always
 
