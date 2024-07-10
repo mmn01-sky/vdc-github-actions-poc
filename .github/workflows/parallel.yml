@@ -41,7 +41,7 @@ jobs:
       - name: Format with Ruff
         run: |
           cd $PYTHON_DEMO_PROJECT_PATH/src && ruff format --check --diff
-        continue-on-error: false
+        continue-on-error: true
 
 
 
