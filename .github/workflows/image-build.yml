@@ -43,7 +43,7 @@ jobs:
       - name: Check Image
         run: docker images
       - name: Test Image
-        run: docker run mmn01/vdc-demo:latest python --version
+        run: docker run mmn01/vdc-demo:latest
 
   # push:
   #   runs-on: ubuntu-latest

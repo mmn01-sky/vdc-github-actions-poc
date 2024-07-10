@@ -4,5 +4,8 @@ USER root
 
 RUN apt update
 
-RUN apt install python3 python3-pip -y
+COPY dummy-script.sh /app/dummy-script.sh
+RUN chmod +x /app/dummy-script.sh
 
+ENTRYPOINT ["/bin/bash"]
+CMD ["/app/dummy-script.sh"]
