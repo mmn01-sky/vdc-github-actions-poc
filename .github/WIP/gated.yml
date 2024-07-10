@@ -1,0 +1,11 @@
+name: Gated
+
+terraform plan dev
+GATE
+terraform apply dev
+terraform plan stage
+GATE
+terraform apply stage
+terraform plan live
+GATE
+terraform apply live

@@ -1,0 +1,58 @@
+name: Parallel
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Build Step
+        run: echo "Build Complete"
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check Lint
+        run: echo "Lint Success"
+
+  format:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: check Format
+        run: echo "Format Success"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: ['format', 'lint']
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Test Python ${{ matrix.python-version }} 
+        run: echo ${{ matrix.python-version }}
+  
+  publish:
+    runs-on: ubuntu-latest
+    needs: ['test']
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Publish Build
+        run: echo "Python App Published"

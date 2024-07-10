@@ -1,0 +1,26 @@
+name: Scheduled
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  timed_schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Triggered First
+        run: echo "This step will always run"
+
+  dependant_step:
+    runs-on: ubuntu-latest
+    needs: timed_schedule
+    if: success()
+    steps:
+      - name: Gated Step
+        run: echo "This step runs only if the first step succeeds"
+
+  automatic_step:
+    runs-on: ubuntu-latest
+    needs: timed_schedule
+    steps:
+      - name: Automatically Run Step
+        run: echo "This step will always run after the first step"
