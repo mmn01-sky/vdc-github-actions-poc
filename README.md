@@ -6,9 +6,6 @@ https://github.com/sky-uk
 
 setup similar actions concourse
 setup self hosted runner
-set environment
-set environment variables
-set enviroment secrets
 create another project that shares runner
 
 # notes
