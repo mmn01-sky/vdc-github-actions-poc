@@ -72,7 +72,7 @@ jobs:
   
   promote:
     runs-on: ubuntu-latest
-    needs: test
+    needs: push
     environment: Dev
     steps:
       - name: Download artifact
