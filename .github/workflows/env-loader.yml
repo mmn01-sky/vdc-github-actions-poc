@@ -1,4 +1,4 @@
-name: CTF
+name: Env Loader
 
 # build - packer validate, packer build, load vars
 # test depends on build - load vars, test inspec
