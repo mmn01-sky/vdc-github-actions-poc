@@ -40,7 +40,7 @@ jobs:
           cd $PYTHON_DEMO_PROJECT_PATH && pip install -r requirements.txt
       - name: Lint with Ruff
         run: |
-          cd $PYTHON_DEMO_PROJECT_PATH/src && ruff format --check --diff --output-format=github
+          cd $PYTHON_DEMO_PROJECT_PATH/src && ruff format --check --output-format=github
         continue-on-error: false
 
 
