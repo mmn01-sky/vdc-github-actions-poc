@@ -59,12 +59,12 @@ jobs:
         run: |
           docker load --input /tmp/vdc-demo.tar
       
+      - name: Check Images
+        run: |
+          docker images
       - name: Tag image with registry
-        env:
-          GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
           docker tag vdc-demo:${{ github.run_number }} sky-registry/vdc-demo:${{ github.run_number }}
-      #     docker tag vdc-demo:latest sky-registry/vdc-demo:${GITHUB_RUN_NUMBER}
       
       - name: Push Image to registry
         run: |
