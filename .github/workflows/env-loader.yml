@@ -18,10 +18,16 @@ jobs:
         with:
           path: projects/vdc-github-actions-env/dev/all.env
           log-variables: true
-          ensure-exists: true
+          export-variables: true
 
-      - name: Print Env Variables
+      - name: Print Github Variables
         run: |
           echo "Environment: ${{ env.VDC_ENVIRONMENT}}"
           echo "URL: ${{ env.VRA_URL}}"
           echo "Username: ${{ env.VRA_USERNAME}}"
+
+      - name: Print Environment Variables
+        run: |
+          echo "Environment: $VDC_ENVIRONMENT"
+          echo "URL: $VRA_URL"
+          echo "Username: $VRA_USERNAME"
