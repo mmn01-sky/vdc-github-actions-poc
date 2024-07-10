@@ -38,9 +38,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           cd $PYTHON_DEMO_PROJECT_PATH && pip install -r requirements.txt
-      - name: Lint with Ruff
+      - name: Format with Ruff
         run: |
-          cd $PYTHON_DEMO_PROJECT_PATH/src && ruff format --check --output-format=github
+          cd $PYTHON_DEMO_PROJECT_PATH/src && ruff format --check --diff
         continue-on-error: false
 
 
