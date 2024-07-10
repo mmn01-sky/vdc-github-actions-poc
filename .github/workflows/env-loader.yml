@@ -16,6 +16,7 @@ jobs:
           path: projects/vdc-github-actions-env/dev/all.env
           log-variables: true
           export-variables: true
+          keys-case: upper
       - name: Print All Envs
         run: env
       - name: Print Github Variables
