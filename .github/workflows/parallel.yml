@@ -96,11 +96,3 @@ jobs:
         env:
           VDC_ENVIRONMENT: ${{ vars.VDC_ENVIRONMENT }}
           VDC_SECRET: ${{ vars.VDC_SECRET }}
-  # publish:
-  #   runs-on: ubuntu-latest
-  #   needs: ['test']
-  #   steps:
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v4
-  #     - name: Publish Build
-  #       run: echo "Python App Published"
