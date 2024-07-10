@@ -19,6 +19,6 @@ jobs:
           path: projects/vdc-github-actions-env/dev/all.env
       - name: Print Env Variables
         run: |
-          echo "Environment: $VDC_ENVIRONMENT"
-          echo "URL: $VRA_URL"
-          echo "Username: $VRA_USERNAME"
+          echo "Environment: ${{ env.VDC_ENVIRONMENT}}"
+          echo "URL: ${{ env.VRA_URL}}"
+          echo "Username: ${{ env.VRA_USERNAME}}"
