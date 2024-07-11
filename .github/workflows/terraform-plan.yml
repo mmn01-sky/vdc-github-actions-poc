@@ -15,6 +15,6 @@ jobs:
       vdc-environment: dev
   live:
     uses: ./.github/workflows/terraform-plan-action.yml
-    needs: terraform_plan_dev
+    needs: dev
     with:
       vdc-environment: live
