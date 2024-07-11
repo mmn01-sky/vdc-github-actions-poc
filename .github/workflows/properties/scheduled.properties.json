@@ -1,5 +1,5 @@
 {
-    "name": "Scheduled Pipeline",
+    "name": "Scheduled",
     "description": "Demonstrate how scheduled pipelines work in Github Actions",
     "creator": "MMN01",
     "iconName": "octicon clock",
