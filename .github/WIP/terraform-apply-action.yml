@@ -1,0 +1,46 @@
+# name: Terraform Apply
+
+# on:
+#   workflow_call:
+#     inputs:
+#       vdc-environment:
+#         required: true
+#         type: string
+#       gh-environment:
+#         required: true
+#         type: string
+
+# concurrency:
+#   group: deploy-${{ inputs.vdc-environment }}
+#   cancel-in-progress: false
+
+# defaults:
+#   run:
+#     working-directory: projects/terraform-demo
+
+# env:
+#   VDC_ENVIRONMENT: ${{ inputs.vdc-environment }}
+
+# jobs:
+#   terraform_apply:
+#     environment: ${{ inputs.gh-environment }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v3
+#         with:
+#           terraform_version: "1.9.2"
+#       - name: Check Environment
+#         run: echo "Terraform Environment ${{ env.VDC_ENVIRONMENT }}"
+#       - name: Terraform Init
+#         id: init
+#         run: terraform init
+#       - name: Terraform Validate
+#         id: validate
+#         run: terraform validate
+#       - name: Terraform Plan
+#         id: plan
+#         run: terraform plan
+#       - name: Terraform Apply
+#         run: terraform apply -auto-approve

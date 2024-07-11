@@ -1,0 +1,16 @@
+name: Terraform
+
+on:
+  pull_request:
+    branches: ['main']
+
+jobs:
+  terraform_plan_dev:
+    uses: .github/workflows/terraform-plan-action.yml
+    with:
+      vdc-environment: dev
+  terraform_plan_live:
+    uses: .github/workflows/terraform-plan-action.yml
+    needs: terraform_apply_dev
+    with:
+      vdc-environment: live
