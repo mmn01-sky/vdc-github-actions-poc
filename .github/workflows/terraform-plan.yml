@@ -9,11 +9,11 @@ permissions:
   pull-requests: write
 
 jobs:
-  terraform_plan_dev:
+  dev:
     uses: ./.github/workflows/terraform-plan-action.yml
     with:
       vdc-environment: dev
-  terraform_plan_live:
+  live:
     uses: ./.github/workflows/terraform-plan-action.yml
     needs: terraform_plan_dev
     with:
