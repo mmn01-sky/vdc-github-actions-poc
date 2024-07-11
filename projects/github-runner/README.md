@@ -1,3 +1,8 @@
+RHEL 8 SM - 8vcpu/8192memory
+<!-- https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/configuring-the-self-hosted-runner-application-as-a-service -->
+
+ssh root@vdc-vm-d005978
+
 useradd --home /app --shell /bin/bash --uid 1000 vdc
 
 sudo -iu vdc
