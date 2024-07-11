@@ -8,13 +8,13 @@ on:
 jobs:
   dev:
     if: github.event.pull_request.merged == true
-    uses: .github/workflows/terraform-plan-action.yml
+    uses: ./.github/workflows/terraform-apply-action.yml
     with:
       vdc-environment: dev
       gh-environment: Dev
   live:
     if: github.event.pull_request.merged == true
-    uses: .github/workflows/terraform-plan-action.yml
+    uses: ./.github/workflows/terraform-apply-action.yml
     with:
       vdc-environment: live
       gh-environment: Live
