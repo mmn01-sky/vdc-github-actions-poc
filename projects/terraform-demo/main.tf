@@ -14,3 +14,13 @@ resource "null_resource" "dummy" {
 output "dummy_output" {
   value = "This is a dummy output"
 }
+
+resource "null_resource" "dummy2" {
+  provisioner "local-exec" {
+    command = "echo Hello, Terraform!"
+  }
+}
+
+output "dummy_output2" {
+  value = "This is dummy output 2"
+}
