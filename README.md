@@ -9,7 +9,3 @@
 
 ## Useful Links
 https://github.com/sky-uk/github-usage/blob/master/guidelines.md#onboarding
-
-
-# notes
-self-hosted runner test
