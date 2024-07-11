@@ -1,8 +1,11 @@
-name: Terraform
+name: Terraform Plan Action
 
 on:
-  pull_request:
-    branches: ['main']
+  workflow_call:
+    inputs:
+      vdc-environment:
+        required: true
+        type: string
 
 defaults:
   run:
@@ -10,6 +13,9 @@ defaults:
 
 permissions:
   pull-requests: write
+
+env:
+  VDC_ENVIRONMENT: ${{ inputs.vdc-environment }}
 
 jobs:
   terraform_plan:
@@ -20,6 +26,8 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.9.2"
+      - name: Check Environment
+        run: echo "Terraform Environment ${{ env.VDC_ENVIRONMENT }}"
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
@@ -41,7 +49,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
+            const output = `## Environment 🌍\`${{ inputs.vdc-environment }}\`
+            #### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
             #### Terraform Validation 🤖\`${{ steps.validate.outcome }}\`
             <details><summary>Validation Output</summary>
@@ -70,13 +79,3 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
-
-# terraform plan dev
-# GATE
-# terraform apply dev
-# terraform plan stage
-# GATE
-# terraform apply stage
-# terraform plan live
-# GATE
-# terraform apply live
