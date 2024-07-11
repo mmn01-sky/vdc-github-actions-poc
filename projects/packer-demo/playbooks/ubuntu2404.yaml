@@ -1,8 +1,0 @@
----
-
-- hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Lets play pretend
-      debug:
-        msg: "Welcome to dummy ansible"
