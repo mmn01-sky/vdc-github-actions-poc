@@ -27,7 +27,7 @@ output "dummy_output2" {
 
 resource "null_resource" "dummy3" {
   provisioner "local-exec" {
-    command = "echo Hello, Terraform3!"
+    command = "echo Hello, Terraform3 PR!"
   }
 }
 
