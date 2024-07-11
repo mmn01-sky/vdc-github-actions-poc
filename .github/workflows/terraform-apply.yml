@@ -6,14 +6,13 @@ on:
     types: ['closed']
 
 jobs:
-  terraform_plan_dev:
+  dev:
     if: github.event.pull_request.merged == true
     uses: .github/workflows/terraform-plan-action.yml
     with:
       vdc-environment: dev
-  terraform_plan_live:
+  live:
     if: github.event.pull_request.merged == true
     uses: .github/workflows/terraform-plan-action.yml
-    needs: terraform_apply_dev
     with:
       vdc-environment: live
