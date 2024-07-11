@@ -6,7 +6,7 @@ on:
 
 jobs:
   terraform_plan_dev:
-    uses: .github/workflows/terraform-plan-action.yml
+    uses: ./.github/workflows/terraform-plan-action.yml
     with:
       vdc-environment: dev
   # terraform_plan_live:
