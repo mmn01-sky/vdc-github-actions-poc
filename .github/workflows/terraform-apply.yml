@@ -1,0 +1,19 @@
+name: Terraform Apply
+
+on:
+  pull_request:
+    branches: ['main']
+    types: ['closed']
+
+jobs:
+  terraform_plan_dev:
+    if: github.event.pull_request.merged == true
+    uses: .github/workflows/terraform-plan-action.yml
+    with:
+      vdc-environment: dev
+  terraform_plan_live:
+    if: github.event.pull_request.merged == true
+    uses: .github/workflows/terraform-plan-action.yml
+    needs: terraform_apply_dev
+    with:
+      vdc-environment: live
